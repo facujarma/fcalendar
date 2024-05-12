@@ -15,6 +15,7 @@ import {
   CalendarContext,
   EventSelectedContext,
 } from "../App";
+import { setUserEvents } from "../Firebase/DocumentsManager";
 
 function EventAddCategory() {
   let { eventSelected } = useContext(EventSelectedContext);
@@ -28,11 +29,11 @@ function EventAddCategory() {
   const handleAddCategory = () => {
     eventSelected.tags = [...eventSelected.tags, ...eventCategories];
     setCalendarInformation({ ...calendarInformation });
-    localStorage.setItem("events", JSON.stringify(calendarInformation));
+    setUserEvents(user.uid, calendarInformation);
   };
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  console.log(categories);
+
   return (
     <>
       <li

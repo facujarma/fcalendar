@@ -5,6 +5,7 @@ import EventAddProperty from "./EventAddProperty";
 import Property from "./Property";
 import CategoryTag from "./CategoryTag";
 import EventAddCategory from "./EventAddCategory";
+import { setUserEvents } from "../Firebase/DocumentsManager";
 
 function EventInformation() {
   let { eventSelected } = useContext(EventSelectedContext);
@@ -17,7 +18,7 @@ function EventInformation() {
 
   const handleClickEdit = () => {
     if (disabled == false) {
-      localStorage.setItem("events", JSON.stringify(calendarInformation));
+      setUserEvents(calendarInformation);
     }
     setDisabled(!disabled);
   };
@@ -36,7 +37,7 @@ function EventInformation() {
         </h3>
       </div>
       <section className="w-full mt-6">
-        <ul className="w-full flex gap-4">
+        <ul className="w-full flex gap-2 flex-wrap">
           {eventSelected == null
             ? null
             : eventSelected.tags.map((tagname, index) => {

@@ -26,7 +26,7 @@ function CategoryTag({
           ? { backgroundColor: categories[tagname] }
           : { backgroundColor: "#444444" }
       }
-      className={`h-5 px-2 text-white rounded-full text-xs grid place-content-center relative`}
+      className="h-5 px-2 text-white rounded-full text-xs grid place-content-center relative whitespace-nowrap"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >

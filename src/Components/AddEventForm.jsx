@@ -13,7 +13,8 @@ import {
   SelectItem,
 } from "@nextui-org/react";
 import { useState, useContext } from "react";
-import { CalendarContext, CategoriesContext } from "../App";
+import { CalendarContext, CategoriesContext} from "../App";
+import { setUserEvents } from "../Firebase/DocumentsManager";
 
 function AddEventForm() {
   const { calendarInformation, setCalendarInformation } =
@@ -43,8 +44,8 @@ function AddEventForm() {
             date: fecha,
             active: true,
             properties: {
-              "BackgroundColor": "#404040",
-              "TextColor": "#FFFFFF",
+              BackgroundColor: "#404040",
+              TextColor: "#FFFFFF",
             },
           },
         ],
@@ -59,8 +60,8 @@ function AddEventForm() {
           date: fecha,
           active: true,
           properties: {
-            "BackgroundColor": "#404040",
-            "TextColor": "#FFFFFF",
+            BackgroundColor: "#404040",
+            TextColor: "#FFFFFF",
           },
         });
       } else {
@@ -72,16 +73,15 @@ function AddEventForm() {
             date: fecha,
             active: true,
             properties: {
-              "BackgroundColor": "#404040",
-              "TextColor": "#FFFFFF",
+              BackgroundColor: "#404040",
+              TextColor: "#FFFFFF",
             },
           },
         ];
       }
     }
-
     setCalendarInformation(events);
-    localStorage.setItem("events", JSON.stringify(events));
+    setUserEvents(events);
   }
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 

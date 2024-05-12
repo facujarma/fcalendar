@@ -1,3 +1,5 @@
+import { setUserEvents } from "../Firebase/DocumentsManager";
+
 function Property({
   clave,
   disabled,
@@ -12,7 +14,7 @@ function Property({
     }
     delete eventSelected.properties[clave];
     setCalendarInformation({ ...calendarInformation });
-    localStorage.setItem("events", JSON.stringify(calendarInformation));
+    setUserEvents(calendarInformation);
   };
 
   return (

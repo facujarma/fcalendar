@@ -12,7 +12,7 @@ import {
   SelectItem,
 } from "@nextui-org/react";
 import { CategoriesContext } from "../App";
-import { color } from "framer-motion";
+import { setUserCategories } from "../Firebase/DocumentsManager";
 
 function AñadirCategoria() {
   const { categories, setCategories } = useContext(CategoriesContext);
@@ -30,14 +30,9 @@ function AñadirCategoria() {
 
   const addCategory = () => {
     if (categoryName !== "") {
-      localStorage.setItem(
-        "categories",
-        JSON.stringify({ ...categories, [categoryName]: colors[categoryColor] })
-      );
-
       setCategories({ ...categories, [categoryName]: colors[categoryColor] });
+      setUserCategories(categories);
     }
-    console.log(categoryName, categoryColor);
   };
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();

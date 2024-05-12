@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
-import { EventSelectedContext } from "../App";
-import { CalendarContext } from "../App";
+import { EventSelectedContext, CalendarContext } from "../App";
 import {
   Modal,
   ModalContent,
@@ -11,17 +10,21 @@ import {
   useDisclosure,
   Input,
 } from "@nextui-org/react";
+import { setUserEvents } from "../Firebase/DocumentsManager";
+
 function EventAddProperty() {
   const [propertyName, setPropertyName] = useState("");
   const [propertyValue, setPropertyValue] = useState("");
 
   const { eventSelected } = useContext(EventSelectedContext);
-  const { calendarInformation, setCalendarInformation } = useContext(CalendarContext);
+  const { calendarInformation, setCalendarInformation } =
+    useContext(CalendarContext);
+
   const handleClick = () => {
     eventSelected.properties[propertyName] = propertyValue;
     setCalendarInformation({ ...calendarInformation });
-    localStorage.setItem("events", JSON.stringify(calendarInformation));
 
+    setUserEvents(calendarInformation);
   };
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
