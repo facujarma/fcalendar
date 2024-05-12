@@ -1,0 +1,107 @@
+import React, { useState, useContext } from "react";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+  Input,
+  Select,
+  SelectItem,
+} from "@nextui-org/react";
+import { CategoriesContext } from "../App";
+import { color } from "framer-motion";
+
+function AñadirCategoria() {
+  const { categories, setCategories } = useContext(CategoriesContext);
+
+  const [categoryName, setCategoryName] = useState("");
+  const [categoryColor, setCategoryColor] = useState("");
+  
+  const colors = {
+    Rojo: "#B42F2F",
+    Azul: "#2F4CB4",
+    Naranja: "#B45F2F",
+    Violeta: "#812FB4",
+    Rosa: "#B42F96",
+  };
+
+  const addCategory = () => {
+    if (categoryName !== "") {
+      localStorage.setItem(
+        "categories",
+        JSON.stringify({ ...categories, [categoryName]: colors[categoryColor] })
+      );
+
+      setCategories({ ...categories, [categoryName]: colors[categoryColor] });
+    }
+    console.log(categoryName, categoryColor);
+  };
+
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  return (
+    <>
+      <li
+        className="w-full h-8 bg-gray-700 rounded-lg text-white grid place-content-center text-xs hover:bg-slate-500 duration-300 cursor-pointer"
+        onClick={onOpen}
+      >
+        Añadir Categoría
+      </li>
+
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">
+                Agrega una Categoría
+              </ModalHeader>
+
+              <ModalBody>
+                <Input
+                  isRequired
+                  autoFocus
+                  label="Nombre"
+                  placeholder="Ingresa el nombre"
+                  variant="bordered"
+                  onChange={(e) => setCategoryName(e.target.value)}
+                />
+
+                <Select
+                  label="Color"
+                  placeholder="Selecciona el color"
+                  className="max-w-md"
+                  variant="bordered"
+                  onChange={(e) => setCategoryColor(e.target.value)}
+                >
+                  {Object.keys(colors).map((clave) => (
+                    <SelectItem key={clave} value={clave}>
+                      {clave}
+                      <div
+                        style={{ backgroundColor: colors[clave] }}
+                        className="w-4 h-4 rounded-full absolute right-2 bottom-2"
+                      ></div>
+                    </SelectItem>
+                  ))}
+                </Select>
+              </ModalBody>
+
+              <ModalFooter>
+                <Button color="danger" variant="flat" onPress={onClose}>
+                  Cancelar
+                </Button>
+                <Button color="primary" onPress={onClose} onClick={addCategory}>
+                  Agregar
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+    </>
+  );
+}
+
+export default AñadirCategoria;
