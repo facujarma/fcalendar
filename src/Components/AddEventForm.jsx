@@ -13,7 +13,7 @@ import {
   SelectItem,
 } from "@nextui-org/react";
 import { useState, useContext } from "react";
-import { CalendarContext, CategoriesContext} from "../App";
+import { CalendarContext, CategoriesContext } from "../App";
 import { setUserEvents } from "../Firebase/DocumentsManager";
 
 function AddEventForm() {
@@ -43,6 +43,7 @@ function AddEventForm() {
             title: name,
             date: fecha,
             active: true,
+            visibility: true,
             properties: {
               BackgroundColor: "#404040",
               TextColor: "#FFFFFF",
@@ -59,6 +60,7 @@ function AddEventForm() {
           title: name,
           date: fecha,
           active: true,
+          visibility: true,
           properties: {
             BackgroundColor: "#404040",
             TextColor: "#FFFFFF",
@@ -72,6 +74,7 @@ function AddEventForm() {
             title: name,
             date: fecha,
             active: true,
+            visibility: true,
             properties: {
               BackgroundColor: "#404040",
               TextColor: "#FFFFFF",

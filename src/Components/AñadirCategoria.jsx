@@ -19,19 +19,25 @@ function AñadirCategoria() {
 
   const [categoryName, setCategoryName] = useState("");
   const [categoryColor, setCategoryColor] = useState("");
-  
+
   const colors = {
     Rojo: "#B42F2F",
     Azul: "#2F4CB4",
     Naranja: "#B45F2F",
     Violeta: "#812FB4",
     Rosa: "#B42F96",
+    Verde: "#4d7c0f",
+    Cyan: "#0891b2",
+    Indigo: "#4f46e5",
   };
 
   const addCategory = () => {
     if (categoryName !== "") {
       setCategories({ ...categories, [categoryName]: colors[categoryColor] });
-      setUserCategories(categories);
+      setUserCategories({
+        ...categories,
+        [categoryName]: colors[categoryColor],
+      });
     }
   };
 

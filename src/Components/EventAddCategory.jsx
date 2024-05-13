@@ -29,7 +29,7 @@ function EventAddCategory() {
   const handleAddCategory = () => {
     eventSelected.tags = [...eventSelected.tags, ...eventCategories];
     setCalendarInformation({ ...calendarInformation });
-    setUserEvents(user.uid, calendarInformation);
+    setUserEvents(calendarInformation);
   };
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();

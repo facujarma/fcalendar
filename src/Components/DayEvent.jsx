@@ -10,9 +10,13 @@ function DayEvent({ event }) {
   return (
     <li className="w-full h-4">
       <span
-        style={{ backgroundColor: event.properties.BackgroundColor, color: event.properties.TextColor }}
+        style={{
+          backgroundColor: event.properties.BackgroundColor,
+          color: event.properties.TextColor,
+        }}
         className={
-          "h-full text-white text-[10px] rounded-sm px-1 w-full block line-clamp-1 cursor-pointer"
+          "h-full text-white text-[10px] rounded-sm px-1 w-full block line-clamp-1 cursor-pointer " +
+          (event.visibility ? "opacity-100" : "opacity-10")
         }
         onClick={handleClick}
       >

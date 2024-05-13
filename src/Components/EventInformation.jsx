@@ -26,14 +26,34 @@ function EventInformation() {
   const handleClickDelete = () => {
     eventSelected.active = false;
     setCalendarInformation({ ...calendarInformation });
-    localStorage.setItem("events", JSON.stringify(calendarInformation));
+
+    setUserEvents(calendarInformation);
+  };
+
+  const handleVisibility = () => {
+    eventSelected.visibility = !eventSelected.visibility;
+    setCalendarInformation({ ...calendarInformation });
+    setUserEvents(calendarInformation);
   };
 
   return (
     <>
       <div className="w-full">
-        <h3 className="text-white text-3xl">
+        <h3 className="text-white text-3xl flex flex-col gap-1">
           {eventSelected == null ? "Selecciona un Evento" : eventSelected.title}
+          <button onClick={handleVisibility}>
+            {eventSelected == null ? null : eventSelected.visibility ? (
+              <img
+                src="src/svg/visibility-active.svg"
+                alt="Desactivar visibilidad"
+              />
+            ) : (
+              <img
+                src="src/svg/visibility-hidden.svg"
+                alt="Activar visibilidad"
+              />
+            )}
+          </button>
         </h3>
       </div>
       <section className="w-full mt-6">

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { setUserEvents } from "../Firebase/DocumentsManager";
 
 function CategoryTag({
   tagname,
@@ -16,7 +17,7 @@ function CategoryTag({
       eventSelected.tags = [];
     }
     setCalendarInformation({ ...calendarInformation });
-    localStorage.setItem("events", JSON.stringify(calendarInformation));
+    setUserEvents(calendarInformation);
   };
 
   return (
