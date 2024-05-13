@@ -26,7 +26,6 @@ function EventInformation() {
   const handleClickDelete = () => {
     eventSelected.active = false;
     setCalendarInformation({ ...calendarInformation });
-    console.log(calendarInformation);
     setUserEvents(calendarInformation);
   };
 
