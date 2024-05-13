@@ -44,12 +44,12 @@ function EventInformation() {
           <button onClick={handleVisibility}>
             {eventSelected == null ? null : eventSelected.visibility ? (
               <img
-                src="src/svg/visibility-active.svg"
-                alt="Desactivar visibilidad"
+                src="public/visibility-active.svg"
+                alt="Activar visibilidad"
               />
             ) : (
               <img
-                src="src/svg/visibility-hidden.svg"
+                src="public/visibility-hidden.svg"
                 alt="Activar visibilidad"
               />
             )}
