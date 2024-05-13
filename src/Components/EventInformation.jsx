@@ -6,6 +6,8 @@ import Property from "./Property";
 import CategoryTag from "./CategoryTag";
 import EventAddCategory from "./EventAddCategory";
 import { setUserEvents } from "../Firebase/DocumentsManager";
+import VisibilityActive from "./svg/VisibilityActive";
+import VisibilityHidden from "./svg/VisibilityHidden";
 
 function EventInformation() {
   let { eventSelected } = useContext(EventSelectedContext);
@@ -43,15 +45,9 @@ function EventInformation() {
           {eventSelected == null ? "Selecciona un Evento" : eventSelected.title}
           <button onClick={handleVisibility}>
             {eventSelected == null ? null : eventSelected.visibility ? (
-              <img
-                src="public/visibility-active.svg"
-                alt="Activar visibilidad"
-              />
+              <VisibilityActive />
             ) : (
-              <img
-                src="public/visibility-hidden.svg"
-                alt="Activar visibilidad"
-              />
+              <VisibilityHidden />
             )}
           </button>
         </h3>
