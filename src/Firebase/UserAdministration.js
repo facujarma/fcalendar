@@ -1,17 +1,16 @@
 import { auth } from "../Firebase/conection";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 export const registerUser = async (email, password) => {
-  try {
-    const userCredentials = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    return userCredentials;
-  } catch (error) {
-    console.log(error);
-  }
+  const userCredentials = await createUserWithEmailAndPassword(
+    auth,
+    email,
+    password
+  );
+  return userCredentials;
 };
 
 export const logOutUser = async () => {
@@ -23,14 +22,10 @@ export const logOutUser = async () => {
 };
 
 export const logInUser = async (email, password) => {
-  try {
-    const userCredentials = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    return userCredentials;
-  } catch (error) {
-    console.log(error);
-  }
+  const userCredentials = await signInWithEmailAndPassword(
+    auth,
+    email,
+    password
+  );
+  return userCredentials;
 };

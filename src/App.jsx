@@ -5,7 +5,10 @@ import { auth } from "./Firebase/conection.js";
 import Calendar from "./Components/Calendar";
 import Menu from "./Components/Menu";
 import Information from "./Components/Information";
-import { getUserCategories, getUserEvents } from "./Firebase/DocumentsManager.js";
+import {
+  getUserCategories,
+  getUserEvents,
+} from "./Firebase/DocumentsManager.js";
 
 export const CalendarContext = React.createContext();
 export const EventSelectedContext = React.createContext();
@@ -14,7 +17,7 @@ export const UserContext = React.createContext();
 
 function App() {
   const [calendarInformation, setCalendarInformation] = useState({});
-  const [categories, setCategories] = useState({ Otros: "#444444" });
+  const [categories, setCategories] = useState({ Otros: {color: "#444444", active: true} });
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -25,7 +28,7 @@ function App() {
       });
       getUserCategories().then((categories) => {
         setCategories(categories);
-      })
+      });
     });
 
     return () => {

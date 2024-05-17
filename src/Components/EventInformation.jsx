@@ -43,13 +43,14 @@ function EventInformation() {
       <div className="w-full">
         <h3 className="text-white text-3xl flex flex-col gap-1">
           {eventSelected == null ? "Selecciona un Evento" : eventSelected.title}
-          <button onClick={handleVisibility}>
+
+          {/*<button onClick={handleVisibility}>
             {eventSelected == null ? null : eventSelected.visibility ? (
-              <VisibilityActive />
+              <VisibilityActive w="24"/>
             ) : (
-              <VisibilityHidden />
+              <VisibilityHidden w="24"/>
             )}
-          </button>
+          </button> */}
         </h3>
       </div>
       <section className="w-full mt-6">

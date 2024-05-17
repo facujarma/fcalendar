@@ -33,10 +33,21 @@ function AñadirCategoria() {
 
   const addCategory = () => {
     if (categoryName !== "") {
-      setCategories({ ...categories, [categoryName]: colors[categoryColor] });
+      setCategories({
+        ...categories,
+        [categoryName]: {
+          color: colors[categoryColor],
+          active: true,
+          focused: false,
+        },
+      });
       setUserCategories({
         ...categories,
-        [categoryName]: colors[categoryColor],
+        [categoryName]: {
+          color: colors[categoryColor],
+          active: true,
+          focused: false,
+        },
       });
     }
   };
