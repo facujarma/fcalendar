@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { setUserEvents } from "../Firebase/DocumentsManager";
 
 function CategoryTag({
   tagname,
@@ -23,7 +24,7 @@ function CategoryTag({
     <li
       style={
         categories[tagname]
-          ? { backgroundColor: categories[tagname] }
+          ? { backgroundColor: categories[tagname].color }
           : { backgroundColor: "#444444" }
       }
       className="h-5 px-2 text-white rounded-full text-xs grid place-content-center relative whitespace-nowrap"

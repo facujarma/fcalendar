@@ -6,6 +6,8 @@ import Property from "./Property";
 import CategoryTag from "./CategoryTag";
 import EventAddCategory from "./EventAddCategory";
 import { setUserEvents } from "../Firebase/DocumentsManager";
+import VisibilityActive from "./svg/VisibilityActive";
+import VisibilityHidden from "./svg/VisibilityHidden";
 
 function EventInformation() {
   let { eventSelected } = useContext(EventSelectedContext);
@@ -26,14 +28,29 @@ function EventInformation() {
   const handleClickDelete = () => {
     eventSelected.active = false;
     setCalendarInformation({ ...calendarInformation });
+
+    setUserEvents(calendarInformation);
+  };
+
+  const handleVisibility = () => {
+    eventSelected.visibility = !eventSelected.visibility;
+    setCalendarInformation({ ...calendarInformation });
     setUserEvents(calendarInformation);
   };
 
   return (
     <>
       <div className="w-full">
-        <h3 className="text-white text-3xl">
+        <h3 className="text-white text-3xl flex flex-col gap-1">
           {eventSelected == null ? "Selecciona un Evento" : eventSelected.title}
+
+          {/*<button onClick={handleVisibility}>
+            {eventSelected == null ? null : eventSelected.visibility ? (
+              <VisibilityActive w="24"/>
+            ) : (
+              <VisibilityHidden w="24"/>
+            )}
+          </button> */}
         </h3>
       </div>
       <section className="w-full mt-6">

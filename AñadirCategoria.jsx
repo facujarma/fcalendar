@@ -26,12 +26,29 @@ function AñadirCategoria() {
     Naranja: "#B45F2F",
     Violeta: "#812FB4",
     Rosa: "#B42F96",
+    Verde: "#4d7c0f",
+    Cyan: "#0891b2",
+    Indigo: "#4f46e5",
   };
 
   const addCategory = () => {
     if (categoryName !== "") {
-      setCategories({ ...categories, [categoryName]: colors[categoryColor] });
-      setUserCategories({ ...categories, [categoryName]: colors[categoryColor] });
+      setCategories({
+        ...categories,
+        [categoryName]: {
+          color: colors[categoryColor],
+          active: true,
+          focused: false,
+        },
+      });
+      setUserCategories({
+        ...categories,
+        [categoryName]: {
+          color: colors[categoryColor],
+          active: true,
+          focused: false,
+        },
+      });
     }
   };
 
@@ -40,7 +57,7 @@ function AñadirCategoria() {
   return (
     <>
       <li
-        className="w-full h-8  bg-gray-700 rounded-lg text-white grid place-content-center text-xs hover:bg-slate-500 duration-300 cursor-pointer"
+        className="w-full h-8 bg-gray-700 rounded-lg text-white grid place-content-center text-xs hover:bg-slate-500 duration-300 cursor-pointer"
         onClick={onOpen}
       >
         Añadir Categoría
