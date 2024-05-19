@@ -34,7 +34,7 @@ function CategoriesListItem({ category }) {
   return (
     <li
       key={category}
-      className="h-6 ml-4 px-2.5 text-[#CCC] text-sm border border-[#3B3B3B] rounded-md cursor-pointer flex justify-between items-center"
+      className="h-6 ml-4 px-2.5 text-[#CCC] text-sm  rounded-md cursor-pointer flex justify-between items-center"
     >
       {category}
 

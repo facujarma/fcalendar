@@ -4,7 +4,7 @@ import Calendar from "./APP/Calendar";
 import Menu from "./APP/Menu";
 import Information from "./APP/Information";
 import { UserContext } from "../App";
-import { getUserEvents, getUserCategories } from "../Firebase/DocumentsManager";
+import { getUserEvents, getUserCategories, setUserCategories } from "../Firebase/DocumentsManager";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../Firebase/conection";
 import { Spinner } from "@nextui-org/react";
@@ -32,6 +32,11 @@ function HomePage() {
         setCalendarInformation(events);
       });
       getUserCategories().then((categories) => {
+        if (!categories) {
+          categories = { Otros: { color: "#444444", active: true } };
+          setUserCategories(categories);
+        }
+
         setCategories(categories);
       });
       setLoading(false);
@@ -45,7 +50,7 @@ function HomePage() {
   if (loading) {
     return (
       <div className="w-screen h-screen flex justify-center items-center bg-[#212121]">
-        <Spinner label="Loading..." color="secondary" labelColor="secondary"/>
+        <Spinner label="Loading..." color="secondary" labelColor="secondary" />
       </div>
     );
   }

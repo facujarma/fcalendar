@@ -7,16 +7,15 @@ import Account from "./Account";
 import LogOut from "./LogOut";
 import CategoriesList from "./CategoriesList";
 import Config from "../svg/Config";
+import AccountConfig from "./AccountConfig";
 function Menu() {
   const { user } = useContext(UserContext);
 
   return (
     <aside className="relative w-full h-full h-content bg-[#212121] p-4 flex flex-col ">
       <div className="flex flex-col gap-4">
-        <Account email={user.email} />
-        <div className="h-8 w-full rounded-md border border-[#353535] flex px-3 items-center gap-2.5 text-sm text-[#ABABAB] cursor-pointer">
-          <Config /> Configuración de la cuenta
-        </div>
+        <Account user={user} />
+        <AccountConfig />
         <LogOut />
       </div>
 

@@ -1,5 +1,6 @@
 import HomePage from "./Components/HomePage";
 import LoginPage from "./Components/LogInPage";
+import AccountPage from "./Components/AccountPage";
 import PageNotFound from "./Components/PageNotFound";
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/account" element={<AccountPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>
