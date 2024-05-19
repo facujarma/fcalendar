@@ -1,34 +1,18 @@
-import React, { useEffect, useState } from "react";
+import HomePage from "./Components/HomePage";
+import LoginPage from "./Components/LogInPage";
+import PageNotFound from "./Components/PageNotFound";
+import React, { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./Firebase/conection.js";
-
-import Calendar from "./Components/Calendar";
-import Menu from "./Components/Menu";
-import Information from "./Components/Information";
-import {
-  getUserCategories,
-  getUserEvents,
-} from "./Firebase/DocumentsManager.js";
-
-export const CalendarContext = React.createContext();
-export const EventSelectedContext = React.createContext();
-export const CategoriesContext = React.createContext();
+import { auth } from "./Firebase/conection";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 export const UserContext = React.createContext();
 
 function App() {
-  const [calendarInformation, setCalendarInformation] = useState({});
-  const [categories, setCategories] = useState({ Otros: {color: "#444444", active: true} });
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      getUserEvents().then((events) => {
-        setCalendarInformation(events);
-      });
-      getUserCategories().then((categories) => {
-        setCategories(categories);
-      });
     });
 
     return () => {
@@ -36,25 +20,15 @@ function App() {
     };
   }, []);
 
-  const [eventSelected, setEventSelected] = useState();
-
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <CalendarContext.Provider
-        value={{ calendarInformation, setCalendarInformation }}
-      >
-        <EventSelectedContext.Provider
-          value={{ eventSelected, setEventSelected }}
-        >
-          <CategoriesContext.Provider value={{ categories, setCategories }}>
-            <div className="md:h-screen flex flex-col md:flex-row">
-              <Menu />
-              <Calendar />
-              <Information />
-            </div>
-          </CategoriesContext.Provider>
-        </EventSelectedContext.Provider>
-      </CalendarContext.Provider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </Router>
     </UserContext.Provider>
   );
 }

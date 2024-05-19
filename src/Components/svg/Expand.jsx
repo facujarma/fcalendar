@@ -1,11 +1,11 @@
-function Expand( {styles} ) {
+function Expand({ styles, w }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="12"
-      height="12"
+      width={w}
+      height={w}
       x="0"
       y="0"
       viewBox="0 0 64 64"
