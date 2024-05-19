@@ -43,8 +43,8 @@ function HomePage() {
 
         setCategories(categories);
       });
+      setLoading(false);
     });
-    setLoading(false);
     return () => {
       unsubscribe();
     };
