@@ -44,11 +44,10 @@ function HomePage() {
         setCategories(categories);
       });
     });
-
+    setLoading(false);
     return () => {
       unsubscribe();
     };
-    setLoading(false);
   }, []);
 
   if (loading) {
