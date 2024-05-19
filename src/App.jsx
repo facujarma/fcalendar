@@ -1,7 +1,8 @@
-import HomePage from "./Components/HomePage";
-import LoginPage from "./Components/LogInPage";
-import AccountPage from "./Components/AccountPage";
-import PageNotFound from "./Components/PageNotFound";
+import HomePage from "./Components/Pages/HomePage";
+import LoginPage from "./Components/Pages/LogInPage";
+import AccountPage from "./Components/Pages/AccountPage";
+import PageNotFound from "./Components/Pages/PageNotFound";
+
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Firebase/conection";
