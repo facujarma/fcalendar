@@ -16,7 +16,7 @@ function LoginPage() {
 
   const [isLogin, setIsLogin] = useState(true);
   return (
-    <div className="bg-[#212121] h-screen w-screen pt-10 flex flex-col gap-10">
+    <div className="bg-[#212121] min-h-screen w-screen pt-10 flex flex-col gap-10">
       <header className="flex flex-col gap-4">
         <h1 className="max-w-md text-white text-center text-2xl mx-auto">
           Inicia sesión o Regístrate para empezar.
@@ -28,7 +28,7 @@ function LoginPage() {
       </header>
 
       <main className="flex flex-col gap-4">
-        <div className="w-full flex justify-between">
+        <div className="w-full flex flex-col md:flex-row justify-between gap-2 px-2">
           <button
             className={
               "w-80 mx-auto h-10 rounded-full duration-300 " +
@@ -41,7 +41,7 @@ function LoginPage() {
           >
             Ya tengo una cuenta
           </button>
-            <span className="text-[#CC] text-lg">o</span>
+            <span className="text-[#CCC] text-lg text-center">o</span>
           <button
             className={
               "w-80 mx-auto h-10 rounded-full duration-300 " +
