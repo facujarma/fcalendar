@@ -32,20 +32,24 @@ function HomePage() {
     setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      getUserEvents().then((events) => {
-        setCalendarInformation(events);
+      try {
+        getUserEvents().then((events) => {
+          setCalendarInformation(events);
+        });
+        getUserCategories().then((categories) => {
+          if (!categories) {
+            categories = { Otros: { color: "#444444", active: true } };
+            setUserCategories(categories);
+          }
+
+          setCategories(categories);
+        });
+      } catch (error) {
+        console.log(error);
+      } finally {
         setLoading(false);
-      });
-      getUserCategories().then((categories) => {
-        if (!categories) {
-          categories = { Otros: { color: "#444444", active: true } };
-          setUserCategories(categories);
-        }
-
-        setCategories(categories);
-      });
+      }
     });
-
     return () => {
       unsubscribe();
     };
@@ -55,7 +59,9 @@ function HomePage() {
     return (
       <div className="w-screen h-screen flex flex-col justify-center items-center bg-[#212121]">
         <Spinner color="secondary" labelColor="secondary" />
-        <p className="text-[#ABABAB] text-center">Recuperando su información <br /> Por favor espere unos segundos.</p>
+        <p className="text-[#ABABAB] text-center">
+          Recuperando su información <br /> Por favor espere unos segundos.
+        </p>
       </div>
     );
   }
