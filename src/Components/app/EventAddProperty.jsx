@@ -24,7 +24,7 @@ function EventAddProperty() {
     eventSelected.properties[propertyName] = propertyValue;
     setCalendarInformation({ ...calendarInformation });
 
-    setUserEvents(calendarInformation);
+    setUserEvents({ ...calendarInformation });
   };
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -32,7 +32,7 @@ function EventAddProperty() {
   return (
     <>
       <button
-        className="w-full h-8 rounded-lg text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white duration-300"
+        className="flex justify-center items-center w-full h-8 px-3 gap-2.5 bg-[#2F4CBB] rounded-md text-sm text-white"
         onClick={onOpen}
       >
         Agregar propiedad

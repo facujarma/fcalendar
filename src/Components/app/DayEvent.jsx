@@ -37,7 +37,7 @@ function DayEvent({ event }) {
           color: event.properties.TextColor,
         }}
         className={
-          "h-full text-white text-[10px] rounded-sm px-1 w-full block line-clamp-1 cursor-pointer " +
+          "block w-full h-full px-1 rounded-sm text-white text-[10px]  line-clamp-1 cursor-pointer " +
           (event.visibility ? "opacity-100 " : "opacity-10 ") + (Focus ? " outline outline-offset-2 outline-1 outline-white" : " outline-0")
         }
         onClick={handleClick}

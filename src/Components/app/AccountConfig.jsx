@@ -9,7 +9,7 @@ function AccountConfig() {
   return (
     <div
       onClick={handleClick}
-      className="h-8 w-full rounded-md border border-[#353535] flex px-3 items-center gap-2.5 text-sm text-[#ABABAB] cursor-pointer hover:bg-[#353535] duration-300"
+      className="flex items-center w-full h-8 px-3 gap-2.5 border border-[#353535] rounded-md text-sm text-[#ABABAB] duration-300 hover:bg-[#353535]"
     >
       <Config /> Configuración de la cuenta
     </div>

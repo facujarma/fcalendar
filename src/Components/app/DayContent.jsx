@@ -5,10 +5,10 @@ function DayContent({ events }) {
 
   return (
     <div
-      className="w-full h-16 overflow-y-auto py-1"
+      className="w-full h-16 py-1 overflow-y-auto"
 
     >
-      <ul className="flex flex-col gap-1 w-full">
+      <ul className="flex flex-col w-full gap-1">
         {events &&
           events.map((event, index) =>
             event.active ? <DayEvent event={event} key={index} /> : null

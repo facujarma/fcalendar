@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 
 function SliderOfDate({ mes, anio, setMonthAndYear }) {
@@ -17,6 +17,32 @@ function SliderOfDate({ mes, anio, setMonthAndYear }) {
     "Diciembre",
   ];
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const tagName = event.target.tagName.toLowerCase();
+      if (
+        tagName !== "input" &&
+        tagName !== "textarea" &&
+        event.key === "ArrowRight"
+      ) {
+        handleClick(1);
+      }
+
+      if (
+        tagName !== "input" &&
+        tagName !== "textarea" &&
+        event.key === "ArrowLeft"
+      ) {
+        handleClick(-1);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  });
+
   const handleClick = (c) => {
     mes += c;
     if (mes >= 12) {
@@ -31,21 +57,21 @@ function SliderOfDate({ mes, anio, setMonthAndYear }) {
   };
 
   return (
-    <div className="h-8 flex justify-between items-center p-2 md:px-12 mt-4 mb-2 gap-6">
+    <div className="flex justify-between items-center h-8 mt-4 mb-2 p-2 gap-6 md:px-12">
       <div
-        className="h-10 text-white text-xl aspect-square grid place-content-center bg-[#313131] rounded-full duration-300 cursor-pointer"
+        className="grid place-content-center h-10 aspect-square bg-[#313131] rounded-full text-white text-xl duration-300 cursor-pointer"
         onClick={() => handleClick(-1)}
       >
         <MdNavigateBefore />
       </div>
 
-      <div className="w-full max-w-72 h-10 flex flex-col gap-2 justify-center items-center ">
-        <span className="h-full text-gray-100 text-2xl grid place-content-center">
+      <div className="flex flex-col justify-center items-center w-full max-w-72 h-10 gap-2">
+        <span className="grid place-content-center h-full text-gray-100 text-2xl">
           {meses[mes]}
         </span>
         <label
           htmlFor="span"
-          className="text-gray-500 text-md text-center -mt-2"
+          className="-mt-2 text-gray-500 text-md text-center"
         >
           {anio}
         </label>
@@ -53,7 +79,7 @@ function SliderOfDate({ mes, anio, setMonthAndYear }) {
 
       <div
         onClick={() => handleClick(1)}
-        className="h-10 text-white text-xl aspect-square grid place-content-center bg-[#313131] rounded-full duration-300 cursor-pointer"
+        className="grid place-content-center h-10 aspect-square bg-[#313131] rounded-full text-white text-xl duration-300 cursor-pointer"
       >
         <MdNavigateNext />
       </div>

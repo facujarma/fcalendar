@@ -3,11 +3,12 @@ import DayContent from "./DayContent";
 import { CalendarContext } from "../Pages/HomePage";
 import Plus from "../../assets/svg/Plus";
 
-function CalendarDay({ index, day, ID, active = true }) {
+function CalendarDay({ index, day, ID, active = true, isToday }) {
   const { calendarInformation } = useContext(CalendarContext);
 
   const [isHover, setIsHover] = useState(false);
   const [hasEvents, setHasEvents] = useState(false);
+
 
   useEffect(() => {
     if (calendarInformation) {
@@ -20,7 +21,7 @@ function CalendarDay({ index, day, ID, active = true }) {
       id={ID}
       key={index}
       className={
-        "relative w-full h-full text-xs border-b border-r border-[#434343] p-1 " +
+        "relative w-full h-full p-1 border-b border-r border-[#434343] text-xs " +
         (active ? "opacity-100" : "opacity-50")
       }
       onMouseEnter={() => setIsHover(true)}
@@ -28,12 +29,13 @@ function CalendarDay({ index, day, ID, active = true }) {
     >
       <span
         className={
-          "block text-xs duration-200 h-3 w-3 lg:h-5 lg:w-5 grid place-content-center rounded-full " +
+          "grid place-content-center w-3 h-3 text-xs rounded-full duration-200 lg:h-5 lg:w-5  " +
           (isHover
             ? "bg-red-500 text-white"
             : active
             ? "text-white"
-            : "text-gray-600")
+            : "text-gray-600") +
+          (isToday ? " bg-blue-400" : "")
         }
       >
         {day}

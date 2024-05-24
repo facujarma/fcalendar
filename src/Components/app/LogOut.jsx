@@ -21,7 +21,7 @@ function logOut() {
     <>
       <div
         onClick={onOpen}
-        className="h-8 w-full rounded-md border border-[#353535] flex px-3 items-center gap-2.5 text-sm text-[#ABABAB] cursor-pointer hover:bg-[#353535] duration-300"
+        className="flex items-center w-full px-3 gap-2.5 h-8 border border-[#353535] rounded-md text-sm text-[#ABABAB] cursor-pointer duration-300 hover:bg-[#353535]"
       >
         <Salir />
         Cerrar Sesión
@@ -52,7 +52,7 @@ function logOut() {
                   onPress={onClose}
                   onClick={handleSubmit}
                 >
-                  Cerrar Sesion
+                  Cerrar Sesión
                 </Button>
               </ModalFooter>
             </>

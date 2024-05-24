@@ -14,6 +14,15 @@ function Calendar() {
     "Sábado",
   ];
 
+  const actualDay = () => {
+    let date = new Date();
+    let dia = date.getDate();
+    let mes = date.getMonth();
+    let anio = date.getFullYear();
+    return dia + "-" + (mes + 1) + "-" + anio;
+  };
+
+  const day = actualDay();
   const offsetMesPasado = (año, mes) => {
     var primerDia = new Date(año, mes, 1);
     var diaSemana = primerDia.getDay();
@@ -55,16 +64,16 @@ function Calendar() {
   });
 
   return (
-    <main className="relative aspect-square bg-[#212121] md:border-x md:border-white ">
+    <main className="relative aspect-square bg-[#212121] md:border-x md:border-[#AAAAAA] ">
       <SliderOfDate setMonthAndYear={setMonthAndYear} mes={mes} anio={anio} />
 
-      <ul className="w-full h-10 grid grid-cols-7 grid-rows-6">
+      <ul className="grid grid-cols-7 grid-rows-6 w-full h-10">
         {días.map((day, i) => (
           <DayRow key={i} day={day} />
         ))}
       </ul>
 
-      <ul className="w-full h-[85.4%] grid grid-cols-7 grid-rows-6">
+      <ul className="grid grid-cols-7 grid-rows-6 w-full h-[85.4%] ">
         {offsetMesPasado(anio, mes).map((_, i) => (
           <CalendarDay
             key={i}
@@ -79,6 +88,7 @@ function Calendar() {
             key={i}
             day={i + 1}
             ID={i + 1 + "-" + (mes + 1) + "-" + anio}
+            isToday={day === i + 1 + "-" + (mes + 1) + "-" + anio}
           />
         ))}
 

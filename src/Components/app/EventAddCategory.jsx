@@ -26,7 +26,7 @@ function EventAddCategory() {
   const handleAddCategory = () => {
     eventSelected.tags = [...eventSelected.tags, ...eventCategories];
     setCalendarInformation({ ...calendarInformation });
-    setUserEvents(calendarInformation);
+    setUserEvents({...calendarInformation});
   };
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -34,7 +34,7 @@ function EventAddCategory() {
   return (
     <>
       <li
-        className="h-5 px-2 text-white rounded-full text-xs grid place-content-center relative bg-[#444444] cursor-pointer"
+        className="relative grid place-content-center h-5 px-2 bg-[#444444] rounded-full text-white text-xs cursor-pointer"
         onClick={onOpen}
       >
        + Añadir

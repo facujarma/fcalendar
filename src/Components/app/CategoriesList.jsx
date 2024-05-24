@@ -8,9 +8,9 @@ function CategoriesList() {
   const { categories } = useContext(CategoriesContext);
 
   return (
-    <div className="w-full h-content cursor-pointer">
+    <div className="categories-list flex flex-col w-full h-full">
       <div
-        className="flex gap-1 w-full items-center"
+        className="flex items-center w-full gap-1 cursor-pointer"
         onClick={() => setOpen(!open)}
       >
         {open ? (
@@ -21,14 +21,13 @@ function CategoriesList() {
             w="12"
           />
         )}
-
         <h3 className="text-[#D1D1D1] text-xl mb-2">Categorías:</h3>
       </div>
 
       {open ? (
-        <ul className="flex flex-col gap-1 w-full overflow-y-auto h-72">
+        <ul className="categories-list-content flex flex-col w-full gap-1 overflow-y-auto">
           {Object.keys(categories).map((category) => (
-            <CategoriesListItem category={category} />
+            <CategoriesListItem key={category} category={category} />
           ))}
         </ul>
       ) : null}

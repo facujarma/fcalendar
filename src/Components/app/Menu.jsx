@@ -3,26 +3,21 @@ import AñadirCategoria from "./AñadirCategoria";
 
 import { useContext } from "react";
 import { UserContext } from "../../App";
-import Account from "./Account";
-import LogOut from "./LogOut";
+
 import CategoriesList from "./CategoriesList";
-import AccountConfig from "./AccountConfig";
+import AsideMenu from "./AsideMenu";
 function Menu() {
   const { user } = useContext(UserContext);
 
   return (
-    <aside className="relative w-full h-full h-content bg-[#212121] p-4 flex flex-col ">
-      <div className="flex flex-col gap-4">
-        <Account user={user} />
-        <AccountConfig />
-        <LogOut />
-      </div>
+    <aside className="relative flex flex-col w-full max-h-full h-content p-4 bg-[#212121]">
+      <AsideMenu user={user} />
 
-      <div className="w-full h-[1px] bg-slate-400 my-4"></div>
+      <div className="hidden w-full h-[1px] my-4 bg-slate-400 md:block"></div>
 
       <CategoriesList />
 
-      <ul className="md:absolute w-full flex flex-col gap-4 bottom-0 right-0 p-4">
+      <ul className="flex flex-col w-full p-2 gap-4">
         <AddEventForm />
         <AñadirCategoria />
         <footer className="hidden md:block">

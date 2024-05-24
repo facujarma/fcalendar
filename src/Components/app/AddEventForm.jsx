@@ -92,7 +92,7 @@ function AddEventForm() {
   return (
     <>
       <li
-        className="w-full h-9 bg-[#353535] rounded-md flex items-center gap-2.5 text-sm px-3 text-[#ABABAB] cursor-pointer hover:bg-[#444444] duration-300"
+        className="flex items-center w-full h-9 px-3 gap-2.5 bg-[#353535] rounded-md text-sm text-[#ABABAB] cursor-pointer duration-300 hover:bg-[#444444]"
         onClick={onOpen}
       >
         <Plus w="20" />

@@ -16,10 +16,14 @@ function CategoryTag({
     if (eventSelected.tags.length === 0) {
       eventSelected.tags = [];
     }
-    console.log(eventSelected)    
     setCalendarInformation({ ...calendarInformation });
-    setUserEvents({...calendarInformation});
+    setUserEvents({ ...calendarInformation });
   };
+
+  if (!categories[tagname]) {
+    handleDelete();
+    return null;
+  }
 
   return (
     <li
@@ -28,14 +32,14 @@ function CategoryTag({
           ? { backgroundColor: categories[tagname].color }
           : { backgroundColor: "#444444" }
       }
-      className="h-5 px-2 text-white rounded-full text-xs grid place-content-center relative whitespace-nowrap"
+      className="relative grid place-content-center h-5 px-2 rounded-full text-xs text-white whitespace-nowrap"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
       {tagname}
       <button
         className={
-          "w-5 h-5 bg-red-500 absolute -top-4 right-1/2 translate-x-1/2 text-white z-10 rounded-full grid place-content-center shadow-lg shadow-black duration-300" +
+          "z-10 absolute grid place-content-center w-5 h-5 bg-red-500 rounded-full -top-4 right-1/2 translate-x-1/2 text-white shadow-lg shadow-black duration-300" +
           (open ? " opacity-100" : " opacity-0")
         }
         onClick={handleDelete}

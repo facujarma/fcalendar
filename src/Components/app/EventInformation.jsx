@@ -10,30 +10,29 @@ import Property from "./Property";
 import CategoryTag from "./CategoryTag";
 import EventAddCategory from "./EventAddCategory";
 import { setUserEvents } from "../../Firebase/DocumentsManager";
+import EventTitle from "./EventTitle";
 
 function EventInformation() {
-  let { eventSelected } = useContext(EventSelectedContext);
+  let { eventSelected, setEventSelected } = useContext(EventSelectedContext);
   const { categories } = useContext(CategoriesContext);
 
   const { setCalendarInformation, calendarInformation } =
     useContext(CalendarContext);
-
   const handleClickDelete = () => {
     eventSelected.active = false;
     setCalendarInformation({ ...calendarInformation });
-
     setUserEvents(calendarInformation);
+
+    setEventSelected(undefined);
   };
 
   return (
     <>
       <div className="w-full">
-        <h3 className="text-[#ABABAB] text-2xl flex flex-col gap-1">
-          {eventSelected == null ? "Selecciona un Evento" : eventSelected.title}
-        </h3>
+        <EventTitle eventSelected={eventSelected}/>
       </div>
       <section className="w-full mt-6">
-        <ul className="w-full flex gap-2 flex-wrap">
+        <ul className="flex w-full gap-2 flex-wrap">
           {eventSelected == null
             ? null
             : eventSelected.tags.map((tagname, index) => {
@@ -58,7 +57,7 @@ function EventInformation() {
           )}
         </ul>
 
-        <ul className="w-full mt-6 flex flex-col gap-2">
+        <ul className="flex flex-col w-full mt-6 gap-2">
           {eventSelected && (
             <>
               <h3 className="text-[#ABABAB] text-xl">Propiedades:</h3>
