@@ -11,6 +11,7 @@ import CategoryTag from "./CategoryTag";
 import EventAddCategory from "./EventAddCategory";
 import { setUserEvents } from "../../Firebase/DocumentsManager";
 import EventTitle from "./EventTitle";
+import { PiProhibit } from "react-icons/pi";
 
 function EventInformation() {
   let { eventSelected, setEventSelected } = useContext(EventSelectedContext);
@@ -29,7 +30,7 @@ function EventInformation() {
   return (
     <>
       <div className="w-full">
-        <EventTitle eventSelected={eventSelected}/>
+        <EventTitle eventSelected={eventSelected} />
       </div>
       <section className="w-full mt-6">
         <ul className="flex w-full gap-2 flex-wrap">
@@ -62,20 +63,37 @@ function EventInformation() {
             <>
               <h3 className="text-[#ABABAB] text-xl">Propiedades:</h3>
 
-              {Object.keys(eventSelected.properties).map((clave) => {
-                return (
+              {Object.keys(eventSelected.properties)
+                .filter(
+                  (clave) =>
+                    clave === "BackgroundColor" || clave === "TextColor"
+                )
+                .map((clave) => (
                   <Property
                     key={clave}
                     clave={clave}
-                    isRequired={
-                      clave == "BackgroundColor" || clave == "TextColor"
-                    }
+                    isRequired={true}
                     eventSelected={eventSelected}
                     setCalendarInformation={setCalendarInformation}
                     calendarInformation={calendarInformation}
                   />
-                );
-              })}
+                ))}
+              <div className="w-full h-[1px] bg-[#292929]"></div>
+              {Object.keys(eventSelected.properties)
+                .filter(
+                  (clave) =>
+                    clave !== "BackgroundColor" && clave !== "TextColor"
+                )
+                .map((clave) => (
+                  <Property
+                    key={clave}
+                    clave={clave}
+                    isRequired={false}
+                    eventSelected={eventSelected}
+                    setCalendarInformation={setCalendarInformation}
+                    calendarInformation={calendarInformation}
+                  />
+                ))}
             </>
           )}
         </ul>
@@ -86,10 +104,11 @@ function EventInformation() {
           <EventAddProperty />
           <div className="w-full flex gap-2">
             <button
-              className="w-full h-8 rounded-lg text-red-500 border border-red-500 hover:bg-red-500 hover:text-white duration-300"
+              className="flex items-center justify-center gap-2 w-full h-9 border border-red-500 rounded-lg text-sm text-red-500 duration-300 hover:bg-red-500 hover:text-white"
               onClick={handleClickDelete}
             >
-              Eliminar
+              <PiProhibit className="w-5 h-5" />
+              Eliminar Evento
             </button>
           </div>
         </div>

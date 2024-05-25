@@ -33,12 +33,15 @@ function DayEvent({ event }) {
     <li className="w-full h-4">
       <span
         style={{
-          backgroundColor: event.properties.BackgroundColor,
-          color: event.properties.TextColor,
+          backgroundColor: event.properties.BackgroundColor.value,
+          color: event.properties.TextColor.value,
         }}
         className={
           "block w-full h-full px-1 rounded-sm text-white text-[10px]  line-clamp-1 cursor-pointer " +
-          (event.visibility ? "opacity-100 " : "opacity-10 ") + (Focus ? " outline outline-offset-2 outline-1 outline-white" : " outline-0")
+          (event.visibility ? "opacity-100 " : "opacity-10 ") +
+          (Focus
+            ? " outline outline-offset-2 outline-1 outline-white"
+            : " outline-0")
         }
         onClick={handleClick}
       >

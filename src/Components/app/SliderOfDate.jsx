@@ -23,6 +23,7 @@ function SliderOfDate({ mes, anio, setMonthAndYear }) {
       if (
         tagName !== "input" &&
         tagName !== "textarea" &&
+        tagName !== "h3" &&
         event.key === "ArrowRight"
       ) {
         handleClick(1);
@@ -31,6 +32,7 @@ function SliderOfDate({ mes, anio, setMonthAndYear }) {
       if (
         tagName !== "input" &&
         tagName !== "textarea" &&
+        tagName !== "h3" &&
         event.key === "ArrowLeft"
       ) {
         handleClick(-1);

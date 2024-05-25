@@ -46,8 +46,14 @@ function AddEventForm() {
             active: true,
             visibility: true,
             properties: {
-              BackgroundColor: "#404040",
-              TextColor: "#FFFFFF",
+              BackgroundColor: {
+                type: "text",
+                value: "#404040",
+              },
+              TextColor: {
+                type: "text",
+                value: "#FFFFFF",
+              },
             },
           },
         ],
@@ -63,8 +69,14 @@ function AddEventForm() {
           active: true,
           visibility: true,
           properties: {
-            BackgroundColor: "#404040",
-            TextColor: "#FFFFFF",
+            BackgroundColor: {
+              type: "text",
+              value: "#404040",
+            },
+            TextColor: {
+              type: "text",
+              value: "#FFFFFF",
+            },
           },
         });
       } else {
@@ -77,8 +89,14 @@ function AddEventForm() {
             active: true,
             visibility: true,
             properties: {
-              BackgroundColor: "#404040",
-              TextColor: "#FFFFFF",
+              BackgroundColor: {
+                type: "text",
+                value: "#404040",
+              },
+              TextColor: {
+                type: "text",
+                value: "#FFFFFF",
+              },
             },
           },
         ];

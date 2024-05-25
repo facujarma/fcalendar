@@ -17,7 +17,7 @@ function Menu() {
 
       <CategoriesList />
 
-      <ul className="flex flex-col w-full p-2 gap-4">
+      <ul className="flex flex-col w-full py-2 gap-4">
         <AddEventForm />
         <AñadirCategoria />
         <footer className="hidden md:block">

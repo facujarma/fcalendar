@@ -9,21 +9,29 @@ import {
   Button,
   useDisclosure,
   Input,
+  Select,
+  SelectItem,
 } from "@nextui-org/react";
 import { setUserEvents } from "../../Firebase/DocumentsManager";
+import Plus from "../../assets/svg/Plus";
+import { MdOutlineAddCircleOutline } from "react-icons/md";
 
 function EventAddProperty() {
   const [propertyName, setPropertyName] = useState("");
   const [propertyValue, setPropertyValue] = useState("");
+  const [propertyType, setPropertyType] = useState("");
 
   const { eventSelected } = useContext(EventSelectedContext);
   const { calendarInformation, setCalendarInformation } =
     useContext(CalendarContext);
 
   const handleClick = () => {
-    eventSelected.properties[propertyName] = propertyValue;
-    setCalendarInformation({ ...calendarInformation });
+    eventSelected.properties[propertyName] = {
+      type: propertyType,
+      value: propertyValue,
+    };
 
+    setCalendarInformation({ ...calendarInformation });
     setUserEvents({ ...calendarInformation });
   };
 
@@ -32,9 +40,10 @@ function EventAddProperty() {
   return (
     <>
       <button
-        className="flex justify-center items-center w-full h-8 px-3 gap-2.5 bg-[#2F4CBB] rounded-md text-sm text-white"
+        className="flex justify-center items-center w-full h-9 px-3 gap-2.5 bg-[#2F4CBB] rounded-md text-sm text-white"
         onClick={onOpen}
       >
+        <MdOutlineAddCircleOutline className="w-5 h-5" />
         Agregar propiedad
       </button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
@@ -56,11 +65,32 @@ function EventAddProperty() {
                 />
                 <Input
                   isRequired
+                  isDisabled={propertyType === "checkbox"}
                   label="Valor"
                   placeholder="Ingresa el valor de la propiedad"
                   variant="bordered"
                   onChange={(e) => setPropertyValue(e.target.value)}
                 />
+                <Select
+                  label="Tipo"
+                  placeholder="Selecciona el tipo"
+                  className="max-w-md"
+                  variant="bordered"
+                  onChange={(e) => setPropertyType(e.target.value)}
+                >
+                  <SelectItem key="text" value="text">
+                    Texto
+                  </SelectItem>
+                  <SelectItem key="num" value="num">
+                    Numero
+                  </SelectItem>
+                  <SelectItem key="checkbox" value="checkbox">
+                    CheckBox
+                  </SelectItem>
+                  <SelectItem key="link" value="link">
+                    Link
+                  </SelectItem>
+                </Select>
               </ModalBody>
 
               <ModalFooter>
