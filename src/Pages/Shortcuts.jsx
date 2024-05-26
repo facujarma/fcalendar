@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getUserCategories, getUserShortcuts, setUserShortcuts } from "../Firebase/DocumentsManager";
 import { Select, SelectItem, Spinner } from "@nextui-org/react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../Firebase/conection";
+import { auth } from "../Firebase/Connection";
 import { useNavigate } from "react-router-dom";
 import StyleProperty from "../Components/Shortcuts/StyleProperty";
 import DragAndDrop from "../Components/Shortcuts/DragAndDrop";

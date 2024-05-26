@@ -6,7 +6,7 @@ import Shortcuts from "./Pages/Shortcuts";
 
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./Firebase/conection";
+import { auth } from "./Firebase/Connection";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 export const UserContext = React.createContext();
 

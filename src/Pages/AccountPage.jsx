@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
 import { Spinner } from "@nextui-org/react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../Firebase/conection";
+import { auth } from "../Firebase/Connection";
 import Information from "../Components/Account/Information";
 import { MdNavigateBefore } from "react-icons/md";
 

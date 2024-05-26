@@ -10,7 +10,7 @@ import {
   setUserCategories,
 } from "../Firebase/DocumentsManager";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../Firebase/conection";
+import { auth } from "../Firebase/Connection";
 import { Spinner } from "@nextui-org/react";
 
 export const CalendarContext = React.createContext();
