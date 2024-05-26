@@ -5,7 +5,7 @@ import { Select, SelectItem, Spinner } from "@nextui-org/react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../Firebase/conection";
 import { useNavigate } from "react-router-dom";
-import StyleProperty from "../shortcuts/StyleProperty";
+import StyleProperty from "../Shortcuts/StyleProperty";
 
 export default function Shortcuts() {
   const [categories, setCategories] = useState({});

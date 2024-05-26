@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Calendar from "../app/Calendar";
-import Menu from "../app/Menu";
-import Information from "../app/Information";
+import Calendar from "../App/Calendar";
+import Menu from "../App/Menu";
+import Information from "../App/Information";
 import { UserContext } from "../../App";
 import {
   getUserEvents,

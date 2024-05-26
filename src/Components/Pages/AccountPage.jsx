@@ -4,7 +4,7 @@ import { UserContext } from "../../App";
 import { Spinner } from "@nextui-org/react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../Firebase/conection";
-import Information from "../account/Information";
+import Information from "../Account/Information";
 import { MdNavigateBefore } from "react-icons/md";
 
 function AccountPage() {
