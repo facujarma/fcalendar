@@ -24,6 +24,7 @@ function App() {
   }, []);
 
   return (
+    
     <UserContext.Provider value={{ user, setUser }}>
       <Router>
         <Routes>
