@@ -3,15 +3,14 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBa-lOEw1skKDFrNwnAu0_Tio0Yc2WXDUQ",
-  authDomain: "fcalendar-e209a.firebaseapp.com",
-  projectId: "fcalendar-e209a",
-  storageBucket: "fcalendar-e209a.appspot.com",
-  messagingSenderId: "1006264848739",
-  appId: "1:1006264848739:web:d3443b00005bbc1825c356",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
-// Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
