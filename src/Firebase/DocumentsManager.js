@@ -40,3 +40,17 @@ export const getUserCategories = async () => {
     setUserCategories({ Otros: "#444444" });
   }
 };
+
+export const setUserShortcuts = async (categories) => {
+  const docRef = doc(db, "shortcuts", uid);
+  await setDoc(docRef, categories);
+};
+
+export const getUserShortcuts = async () => {
+  const docRef = doc(db, "shortcuts", uid);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    return docSnap.data();
+  }
+};
+

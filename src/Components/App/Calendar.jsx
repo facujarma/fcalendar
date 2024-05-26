@@ -1,9 +1,31 @@
+import React, { useEffect } from "react";
 import CalendarDay from "./CalendarDay";
 import DayRow from "./DayRow";
 import SliderOfDate from "./SliderOfDate";
 import { useState } from "react";
+import { getUserShortcuts } from "../../Firebase/DocumentsManager";
+
+export const ShortcutsContext = React.createContext();
 
 function Calendar() {
+  const [shortcuts, setShortcuts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        //Shortcuts
+        const shortcutsData = await getUserShortcuts();
+        if (shortcutsData) {
+          const shortcutsArray = Object.values(shortcutsData);
+          setShortcuts(shortcutsArray);
+        }
+      } catch (error) {
+        console.error("Error fetching shortcuts:", error);
+      }
+    };
+    fetchData();
+  }, [])
+
   const días = [
     "Domingo",
     "Lunes",
@@ -63,6 +85,7 @@ function Calendar() {
     anio: getMonthAndYear().anio,
   });
 
+
   return (
     <main className="relative aspect-square bg-[#212121] md:border-x md:border-[#AAAAAA] ">
       <SliderOfDate setMonthAndYear={setMonthAndYear} mes={mes} anio={anio} />
@@ -73,38 +96,37 @@ function Calendar() {
         ))}
       </ul>
 
-      <ul className="grid grid-cols-7 grid-rows-6 w-full h-[85.4%] ">
-        {offsetMesPasado(anio, mes).map((_, i) => (
-          <CalendarDay
-            key={i}
-            day={_}
-            ID={_ + "-" + mes + "-" + anio}
-            active={false}
-          />
-        ))}
+      <ShortcutsContext.Provider value={{ shortcuts }}>
 
-        {[...Array(DaysInMonth(mes, anio))].map((_, i) => (
-          <CalendarDay
-            key={i}
-            day={i + 1}
-            ID={i + 1 + "-" + (mes + 1) + "-" + anio}
-            isToday={day === i + 1 + "-" + (mes + 1) + "-" + anio}
-          />
-        ))}
+        <ul className="grid grid-cols-7 grid-rows-6 w-full h-[85.4%] ">
+          {offsetMesPasado(anio, mes).map((_, i) => (
+            <CalendarDay
+              key={i}
+              day={_}
+              ID={_ + "-" + mes + "-" + anio}
+              active={false}
+            />
+          ))}
 
-        {offsetMesSiguiente(anio, mes).map((_, i) => (
-          <CalendarDay
-            key={i}
-            day={_}
-            active={false}
-            ID={_ + "-" + (mes + 2) + "-" + anio}
-          />
-        ))}
-      </ul>
+          {[...Array(DaysInMonth(mes, anio))].map((_, i) => (
+            <CalendarDay
+              key={i}
+              day={i + 1}
+              ID={i + 1 + "-" + (mes + 1) + "-" + anio}
+              isToday={day === i + 1 + "-" + (mes + 1) + "-" + anio}
+            />
+          ))}
 
-      {
-        //<SearchBar />
-      }
+          {offsetMesSiguiente(anio, mes).map((_, i) => (
+            <CalendarDay
+              key={i}
+              day={_}
+              active={false}
+              ID={_ + "-" + (mes + 2) + "-" + anio}
+            />
+          ))}
+        </ul>
+      </ShortcutsContext.Provider>
     </main>
   );
 }

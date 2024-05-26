@@ -24,14 +24,14 @@ function App() {
   }, []);
 
   return (
-    
+
     <UserContext.Provider value={{ user, setUser }}>
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/account" element={<AccountPage />} />
-          {/* <Route path="/shortcuts" element={<Shortcuts />} /> */}
+          <Route path="/shortcuts" element={<Shortcuts />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>

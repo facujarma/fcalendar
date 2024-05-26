@@ -1,6 +1,6 @@
 import Step from "./Step";
 
-function CardStep({ children, title, desc, n }) {
+function CardStep({ children, title, desc, n, active }) {
   return (
     <div className="relative w-full px-4 py-2">
       <header>
@@ -8,9 +8,10 @@ function CardStep({ children, title, desc, n }) {
           <Step number={n} />
           {title}
         </h3>
-        <p className="mb-4 mt-2 text-xs text-[#ABABAB]">{desc}</p>
+        <p className="mb-4 mt-2 text-sm text-[#ABABAB]">{desc}</p>
       </header>
-      {children}
+
+      { active && children}
     </div>
   );
 }

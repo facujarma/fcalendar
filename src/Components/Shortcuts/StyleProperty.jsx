@@ -9,7 +9,7 @@ function StyleProperty({ name, setProperties, properties }) {
           properties[name] = e.target.value;
           setProperties(properties);
         }}
-        className="w-full h-7 px-2 bg-[#313131] border border-[#A1A1A1] rounded-lg text-sm text-[#A1A1A1]"
+        className="w-full h-9 px-2 bg-[#313131] border border-[#A1A1A1] rounded-lg text-sm text-[#A1A1A1]"
         placeholder={"Ingresa el valor de la propiedad: " + name}
       />
     </li>
