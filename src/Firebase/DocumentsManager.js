@@ -1,5 +1,5 @@
 import { doc, setDoc, getDoc } from "firebase/firestore";
-import { db, auth } from "./conection.js";
+import { db, auth } from "./Connection.js";
 import { onAuthStateChanged } from "firebase/auth";
 
 var uid;

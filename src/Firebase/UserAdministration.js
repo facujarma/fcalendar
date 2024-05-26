@@ -1,4 +1,4 @@
-import { auth } from "../Firebase/conection";
+import { auth } from "../Firebase/Connection";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
