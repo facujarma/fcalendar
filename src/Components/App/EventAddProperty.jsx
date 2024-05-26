@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { CalendarContext, EventSelectedContext } from "../Pages/HomePage";
+import { CalendarContext, EventSelectedContext } from "../../Pages/HomePage";
 import {
   Modal,
   ModalContent,

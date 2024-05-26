@@ -11,7 +11,7 @@ import {
   Select,
   SelectItem,
 } from "@nextui-org/react";
-import { CategoriesContext } from "../Pages/HomePage";
+import { CategoriesContext } from "../../Pages/HomePage";
 
 import { setUserCategories } from "../../Firebase/DocumentsManager";
 import Plus from "../../assets/svg/Plus";

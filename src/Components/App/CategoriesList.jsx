@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { CategoriesContext } from "../Pages/HomePage";
+import { CategoriesContext } from "../../Pages/HomePage";
 import CategoriesListItem from "./CategoriesListItem";
 import Expand from "../../assets/svg/Expand";
 

@@ -13,7 +13,7 @@ import {
   SelectItem,
 } from "@nextui-org/react";
 import { useState, useContext } from "react";
-import { CalendarContext, CategoriesContext } from "../Pages/HomePage";
+import { CalendarContext, CategoriesContext } from "../../Pages/HomePage";
 import { setUserEvents } from "../../Firebase/DocumentsManager";
 import Plus from "../../assets/svg/Plus";
 

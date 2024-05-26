@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import VisibilityHidden from "../../assets/svg/VisibilityHidden";
 import VisibilityActive from "../../assets/svg/VisibilityActive";
-import { CategoriesContext } from "../Pages/HomePage";
+import { CategoriesContext } from "../../Pages/HomePage";
 import { setUserCategories } from "../../Firebase/DocumentsManager";
 import Favorito from "../../assets/svg/Favorito";
 import { MdOutlineDelete } from "react-icons/md";

@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Calendar from "../App/Calendar";
-import Menu from "../App/Menu";
-import Information from "../App/Information";
-import { UserContext } from "../../App";
+import Calendar from "../Components/App/Calendar";
+import Menu from "../Components/App/Menu";
+import Information from "../Components/App/Information";
+import { UserContext } from "../App";
 import {
   getUserEvents,
   getUserCategories,
   setUserCategories,
-} from "../../Firebase/DocumentsManager";
+} from "../Firebase/DocumentsManager";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../Firebase/conection";
+import { auth } from "../Firebase/conection";
 import { Spinner } from "@nextui-org/react";
 
 export const CalendarContext = React.createContext();

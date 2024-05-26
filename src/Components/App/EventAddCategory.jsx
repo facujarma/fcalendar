@@ -10,7 +10,7 @@ import {
   SelectItem,
 } from "@nextui-org/react";
 import { useState, useContext } from "react";
-import { CalendarContext, CategoriesContext, EventSelectedContext } from "../Pages/HomePage";
+import { CalendarContext, CategoriesContext, EventSelectedContext } from "../../Pages/HomePage";
 
 import { setUserEvents } from "../../Firebase/DocumentsManager";
 
@@ -26,7 +26,7 @@ function EventAddCategory() {
   const handleAddCategory = () => {
     eventSelected.tags = [...eventSelected.tags, ...eventCategories];
     setCalendarInformation({ ...calendarInformation });
-    setUserEvents({...calendarInformation});
+    setUserEvents({ ...calendarInformation });
   };
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -37,7 +37,7 @@ function EventAddCategory() {
         className="relative grid place-content-center h-5 px-2 bg-[#444444] rounded-full text-white text-xs cursor-pointer"
         onClick={onOpen}
       >
-       + Añadir
+        + Añadir
       </li>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
         <ModalContent>

@@ -3,7 +3,7 @@ import {
   CalendarContext,
   CategoriesContext,
   EventSelectedContext,
-} from "../Pages/HomePage";
+} from "../../Pages/HomePage";
 
 import EventAddProperty from "./EventAddProperty";
 import Property from "./Property";

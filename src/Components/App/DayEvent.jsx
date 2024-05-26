@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { EventSelectedContext, CategoriesContext } from "../Pages/HomePage";
+import { EventSelectedContext, CategoriesContext } from "../../Pages/HomePage";
 
 function DayEvent({ event }) {
   const { categories } = useContext(CategoriesContext);

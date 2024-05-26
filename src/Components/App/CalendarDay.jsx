@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import DayContent from "./DayContent";
-import { CalendarContext } from "../Pages/HomePage";
+import { CalendarContext } from "../../Pages/HomePage";
 import Plus from "../../assets/svg/Plus";
 
 function CalendarDay({ index, day, ID, active = true, isToday }) {

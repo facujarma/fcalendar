@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LoginForm from "../LoginRegister/LoginForm";
-import RegisterForm from "../LoginRegister/RegisterForm";
-import { UserContext } from "../../App";
+import LoginForm from "../Components/LoginRegister/LoginForm";
+import RegisterForm from "../Components/LoginRegister/RegisterForm";
+import { UserContext } from "../App";
 
 function LoginPage() {
   const { user } = useContext(UserContext);

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
-import { CalendarContext } from "../Pages/HomePage";
+import { CalendarContext } from "../../Pages/HomePage";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { setUserEvents } from "../../Firebase/DocumentsManager";
 
