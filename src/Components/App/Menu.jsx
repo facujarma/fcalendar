@@ -14,7 +14,7 @@ function Menu() {
       <AsideMenu user={user} />
 
       <div className="hidden w-full h-[1px] my-4 bg-slate-400 md:block"></div>
-
+      <a href="/shortcuts" className="flex items-center w-full h-8 px-3 gap-2.5 border border-[#353535] rounded-md text-sm text-[#ABABAB] duration-300 hover:bg-[#353535]"> Shortcuts</a>
       <CategoriesList />
 
       <ul className="flex flex-col w-full py-2 gap-4">

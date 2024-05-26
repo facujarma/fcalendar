@@ -61,6 +61,7 @@ export default function Shortcuts() {
 
   const handleSubmit = async () => {
     await setUserShortcuts({ ...shortcuts });
+    navigate("/");
   }
 
   if (loading) {
