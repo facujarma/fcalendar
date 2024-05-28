@@ -33,7 +33,7 @@ function AsideMenu({ user }) {
 
         <Account user={user} />
         <AccountConfig />
-        <a href="/shortcuts/newShortcut" className="flex items-center w-full h-8 px-3 gap-2.5 border border-[#353535] rounded-md text-sm text-[#ABABAB] duration-300 hover:bg-[#353535]">
+        <a href="/shortcuts" className="flex items-center w-full h-8 px-3 gap-2.5 border border-[#353535] rounded-md text-sm text-[#ABABAB] duration-300 hover:bg-[#353535]">
           <MdOutlineSwitchAccessShortcutAdd className="text-xl text-[#ABABAB]"/>Administrar los Shortcuts</a>
         <LogOut />
       </div>
