@@ -20,12 +20,12 @@ function DragAndDrop({ shortcuts, setShortcuts }) {
   };
 
   return (
-    <div>
+    <ul className="flex flex-col gap-2.5">
       {shortcuts.map((shortcut, index) => (
         shortcut ? (
           <li
             key={index}
-            className="w-full text-white"
+            className="relative flex items-center justify-start w-full gap-2.5 text-white list-none"
             draggable
             onDragStart={(e) => {
               dragShortcut.current = index;
@@ -39,11 +39,14 @@ function DragAndDrop({ shortcuts, setShortcuts }) {
               e.preventDefault();
             }}
           >
+            <div className="grid place-content-center w-4 h-4 bg-blue-600 rounded-full text-xs">
+              {index+1}
+            </div>
             {shortcut.name}
           </li>
         ) : null
       ))}
-    </div>
+    </ul>
   );
 }
 

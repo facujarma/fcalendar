@@ -3,6 +3,7 @@ import LoginPage from "./Pages/LogInPage";
 import AccountPage from "./Pages/AccountPage";
 import PageNotFound from "./Pages/PageNotFound";
 import Shortcuts from "./Pages/Shortcuts";
+import NewShortcut from "./Pages/NewShortcut";
 
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
@@ -31,7 +32,9 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/account" element={<AccountPage />} />
+          <Route path="/shortcuts/newShortcut" element={<NewShortcut />} />
           <Route path="/shortcuts" element={<Shortcuts />} />
+          
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>

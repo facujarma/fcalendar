@@ -6,6 +6,7 @@ import { UserContext } from "../../App";
 
 import CategoriesList from "./CategoriesList";
 import AsideMenu from "./AsideMenu";
+import Plus from "../../assets/svg/Plus";
 function Menu() {
   const { user } = useContext(UserContext);
 
@@ -14,12 +15,22 @@ function Menu() {
       <AsideMenu user={user} />
 
       <div className="hidden w-full h-[1px] my-4 bg-slate-400 md:block"></div>
-      <a href="/shortcuts" className="flex items-center w-full h-8 px-3 gap-2.5 border border-[#353535] rounded-md text-sm text-[#ABABAB] duration-300 hover:bg-[#353535]"> Shortcuts</a>
       <CategoriesList />
 
       <ul className="flex flex-col w-full py-2 gap-4">
         <AddEventForm />
         <AñadirCategoria />
+        <li
+          className="flex items-center w-full h-9 px-3 gap-2.5 bg-[#353535] rounded-md text-sm text-[#ABABAB] cursor-pointer duration-300 hover:bg-[#444444]"
+          onClick={() => {
+            location.href = "/shortcuts/newShortcut"
+
+          }
+          }
+        >
+          <Plus w="20" />
+          Agregar Shortcut
+        </li>
         <footer className="hidden md:block">
           <p className="text-slate-400 text-xs whitespace-nowrap">
             © 2024. Todos los derechos reservados <br />{" "}

@@ -6,6 +6,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../Firebase/Connection";
 import Information from "../Components/Account/Information";
 import { MdNavigateBefore } from "react-icons/md";
+import Header from "../Components/Layout/Header";
 
 function AccountPage() {
   const { user, setUser } = useContext(UserContext);
@@ -38,14 +39,7 @@ function AccountPage() {
 
   return (
     <div className="w-screen min-h-screen bg-[#212121] p-6">
-      <div className="flex items-center gap-2">
-        <MdNavigateBefore
-          className="text-3xl text-white"
-          onClick={() => navigate("/")}
-          cursor="pointer"
-        />
-        <h1 className="text-2xl text-white">Acerca de tu cuenta</h1>
-      </div>
+      <Header title="Acerca de tu cuenta" description="En esta seccion encontraras toda la informacion que recuperamos y utilizamos de tu cuenta." />
 
       <Information user={user} />
     </div>

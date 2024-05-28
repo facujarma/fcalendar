@@ -26,7 +26,6 @@ function Property({
 
   useEffect(() => {
     setValue(eventSelected.properties[clave].value);
-    console.log(eventSelected.properties[clave]);
   }, [eventSelected]);
 
   return (

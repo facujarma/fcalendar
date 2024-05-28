@@ -3,7 +3,7 @@ import LogOut from "./LogOut";
 import AccountConfig from "./AccountConfig";
 import { useState } from "react";
 import { IoMenu } from "react-icons/io5";
-import { MdClose } from "react-icons/md";
+import { MdClose, MdOutlineSwitchAccessShortcutAdd } from "react-icons/md";
 
 function AsideMenu({ user }) {
   const [open, setOpen] = useState(false);
@@ -33,6 +33,8 @@ function AsideMenu({ user }) {
 
         <Account user={user} />
         <AccountConfig />
+        <a href="/shortcuts/newShortcut" className="flex items-center w-full h-8 px-3 gap-2.5 border border-[#353535] rounded-md text-sm text-[#ABABAB] duration-300 hover:bg-[#353535]">
+          <MdOutlineSwitchAccessShortcutAdd className="text-xl text-[#ABABAB]"/>Administrar los Shortcuts</a>
         <LogOut />
       </div>
     </>

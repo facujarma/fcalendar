@@ -17,8 +17,8 @@ function DayEvent({ event }) {
   };
 
   function changeVisibility() {
-    for (const tag in event.tags) {
-      if (!categories[event.tags[tag]]?.active) {
+    for (const tag of event.tags) {
+      if (!categories[tag]?.active) {
         return false;
       }
     }
@@ -26,8 +26,8 @@ function DayEvent({ event }) {
   }
 
   function isFocused() {
-    for (const tag in event.tags) {
-      if (categories[event.tags[tag]]?.focused) {
+    for (const tag of event.tags) {
+      if (categories[tag]?.focused) {
         return true;
       }
     }
@@ -35,20 +35,35 @@ function DayEvent({ event }) {
   }
 
   useEffect(() => {
-    if (shortcuts) {
-      const newProperties = { ...properties };
+    console.log(event);
+
+    const newProperties = {
+      BackgroundColor: event.properties.BackgroundColor.value,
+      TextColor: event.properties.TextColor.value,
+    };
+    
+    if (shortcuts && event.properties.PriorizePersonal.value === false) {
       const shortcutsArray = Array.isArray(shortcuts) ? shortcuts : Object.values(shortcuts);
-      for (const tag of event.tags) {
-        for (const shortcut of shortcutsArray) {
+      shortcutsArray.sort((a, b) => b.shortcutPriority - a.shortcutPriority);
+      console.log(shortcutsArray)
+      for (const shortcut of shortcutsArray) {
+        for (const tag of event.tags) {
           if (shortcut.name === tag) {
             newProperties.BackgroundColor = shortcut.properties.BackgroundColor;
             newProperties.TextColor = shortcut.properties.TextColor;
           }
         }
       }
-      setProperties(newProperties);
     }
-  }, [shortcuts, event.tags]);
+
+    setProperties(newProperties);
+  }, [
+    shortcuts, 
+    event.properties.BackgroundColor.value, 
+    event.properties.TextColor.value, 
+    event.properties.PriorizePersonal.value, 
+    event.tags
+  ]);
 
   event.visibility = changeVisibility();
   const Focus = isFocused();

@@ -19,6 +19,7 @@ function EventInformation() {
 
   const { setCalendarInformation, calendarInformation } =
     useContext(CalendarContext);
+
   const handleClickDelete = () => {
     eventSelected.active = false;
     setCalendarInformation({ ...calendarInformation });
@@ -26,7 +27,6 @@ function EventInformation() {
 
     setEventSelected(undefined);
   };
-
   return (
     <>
       <div className="w-full">
@@ -37,18 +37,18 @@ function EventInformation() {
           {eventSelected == null
             ? null
             : eventSelected.tags.map((tagname, index) => {
-                return (
-                  <CategoryTag
-                    key={index}
-                    tagname={tagname}
-                    i={index}
-                    categories={categories}
-                    setCalendarInformation={setCalendarInformation}
-                    calendarInformation={calendarInformation}
-                    eventSelected={eventSelected}
-                  />
-                );
-              })}
+              return (
+                <CategoryTag
+                  key={index}
+                  tagname={tagname}
+                  i={index}
+                  categories={categories}
+                  setCalendarInformation={setCalendarInformation}
+                  calendarInformation={calendarInformation}
+                  eventSelected={eventSelected}
+                />
+              );
+            })}
           {eventSelected == null ? null : (
             <EventAddCategory
               setCalendarInformation={setCalendarInformation}
@@ -66,7 +66,7 @@ function EventInformation() {
               {Object.keys(eventSelected.properties)
                 .filter(
                   (clave) =>
-                    clave === "BackgroundColor" || clave === "TextColor"
+                    clave === "BackgroundColor" || clave === "TextColor" || clave === "PriorizePersonal"
                 )
                 .map((clave) => (
                   <Property
@@ -82,7 +82,7 @@ function EventInformation() {
               {Object.keys(eventSelected.properties)
                 .filter(
                   (clave) =>
-                    clave !== "BackgroundColor" && clave !== "TextColor"
+                    clave !== "BackgroundColor" && clave !== "TextColor" && clave !== "PriorizePersonal"
                 )
                 .map((clave) => (
                   <Property

@@ -2,7 +2,7 @@ import Step from "./Step";
 
 function CardStep({ children, title, desc, n, active }) {
   return (
-    <div className="relative w-full px-4 py-2">
+    <div className="relative w-full px-4 py-2 my-4">
       <header>
         <h3 className="flex gap-2 text-xl text-[#EEE]">
           <Step number={n} />

@@ -54,6 +54,10 @@ function AddEventForm() {
                 type: "text",
                 value: "#FFFFFF",
               },
+              "PriorizePersonal": {
+                type: "checkbox",
+                value: false
+              }
             },
           },
         ],
@@ -77,6 +81,10 @@ function AddEventForm() {
               type: "text",
               value: "#FFFFFF",
             },
+            "PriorizePersonal": {
+              type: "checkbox",
+              value: false
+            }
           },
         });
       } else {
@@ -89,14 +97,18 @@ function AddEventForm() {
             active: true,
             visibility: true,
             properties: {
-              BackgroundColor: {
+              "BackgroundColor": {
                 type: "text",
                 value: "#404040",
               },
-              TextColor: {
+              "TextColor": {
                 type: "text",
                 value: "#FFFFFF",
               },
+              "PriorizePersonal": {
+                type: "checkbox",
+                value: false
+              }
             },
           },
         ];
