@@ -6,6 +6,7 @@ import { auth } from '../Firebase/Connection';
 import { onAuthStateChanged } from 'firebase/auth';
 import { getUserShortcuts, setUserShortcuts } from '../Firebase/DocumentsManager';
 import Header from "../Components/Layout/Header";
+import DragAndDropList from '../Components/Shortcuts/DragAndDropList';
 
 function Shortcuts() {
   const [loading, setLoading] = useState(true);
@@ -54,7 +55,7 @@ function Shortcuts() {
       <Header title="Administra tus Shortcuts" description="Aqui podras administar la jerarquia de tus shortcuts para que algunos estilos prevalezcan por sobre otros." />
       <main className='flex flex-col max-w-64 p-4 mt-10 mx-auto border border-[#ABABAB] rounded-lg '>
         <h2 className='mb-4 text-white text-2xl'>Mueve tus Shortcuts</h2>
-        <DragAndDrop shortcuts={shortcuts} setShortcuts={setShortcuts} />
+        <DragAndDropList shortcuts={shortcuts} setShortcuts={setShortcuts} />
         <button onClick={handleCreate} className="w-full h-8 px-2 mt-8 bg-[#2F4CB4] rounded-lg text-white text-sm">Guardar Cambios</button>
       </main>
     </div>

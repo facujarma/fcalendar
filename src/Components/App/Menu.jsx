@@ -24,7 +24,6 @@ function Menu() {
           className="flex items-center w-full h-9 px-3 gap-2.5 bg-[#353535] rounded-md text-sm text-[#ABABAB] cursor-pointer duration-300 hover:bg-[#444444]"
           onClick={() => {
             location.href = "/shortcuts/newShortcut"
-
           }
           }
         >

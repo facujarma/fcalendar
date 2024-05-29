@@ -40,7 +40,6 @@ function AccountPage() {
   return (
     <div className="w-screen min-h-screen bg-[#212121] p-6">
       <Header title="Acerca de tu cuenta" description="En esta seccion encontraras toda la informacion que recuperamos y utilizamos de tu cuenta." />
-
       <Information user={user} />
     </div>
   );

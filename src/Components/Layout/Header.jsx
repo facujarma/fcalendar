@@ -13,7 +13,7 @@ function Header({ title, description }) {
                 />
                 <h1 className="text-2xl text-white font-bold">{title}</h1>
             </div>
-            <p className="text-sm text-[#ABABAB] mt-2 text-pretty">
+            <p className="text-sm text-[#ABABAB] mt-2 ml-9 text-pretty">
                 {description}
             </p>
         </header>
